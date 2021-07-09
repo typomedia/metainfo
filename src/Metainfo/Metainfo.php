@@ -31,6 +31,16 @@ class Metainfo
     public $format;
 
     /**
+     * @var string
+     */
+    public $date;
+
+    /**
+     * @var array
+     */
+    public $path;
+
+    /**
      * @param $filename
      */
     public function read($filename)
@@ -39,7 +49,9 @@ class Metainfo
 
         $this->title = $this->get($metainfo, 'dc:title');
         $this->author = $this->get($metainfo, 'dc:creator');
+        $this->date = $this->get($metainfo, 'dc:date');
         $this->format = $this->get($metainfo, 'dc:format');
+        $this->path = pathinfo($filename);
         $this->description = $this->get($metainfo, 'dc:description');
     }
 
