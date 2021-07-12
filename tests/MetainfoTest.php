@@ -16,21 +16,16 @@ class MetainfoTest extends TestCase
      */
     protected $metainfo;
 
-    protected function setUp() : void
-    {
-        $this->metainfo = new Metainfo();
-    }
-
     public function testPdf()
     {
         $file = __DIR__ . '/Fixtures/pdfa_metadata-2b.pdf';
 
-        $this->metainfo->read($file);
-        $this->assertEquals('PDF/A Metadata – XMP, RDF &amp; Dublin Core', $this->metainfo->title);
-        $this->assertEquals('PDF/A Competence Center, Leonard Rosenthol', $this->metainfo->author);
-        $this->assertEquals('PDF/A Metadata – XMP, RDF &amp; Dublin Core', $this->metainfo->description);
-        $this->assertEquals('application/pdf', $this->metainfo->format);
-        $this->assertEmpty($this->metainfo->date);
-        $this->assertIsArray($this->metainfo->path);
+        $metainfo = new Metainfo($file);
+        $this->assertEquals('PDF/A Metadata – XMP, RDF &amp; Dublin Core', $metainfo->title);
+        $this->assertEquals('PDF/A Competence Center, Leonard Rosenthol', $metainfo->author);
+        $this->assertEquals('PDF/A Metadata – XMP, RDF &amp; Dublin Core', $metainfo->description);
+        $this->assertEquals('application/pdf', $metainfo->format);
+        $this->assertEmpty($metainfo->date);
+        $this->assertIsArray($metainfo->pathinfo);
     }
 }

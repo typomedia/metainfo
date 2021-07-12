@@ -38,12 +38,15 @@ class Metainfo
     /**
      * @var array
      */
-    public $path;
+    public $pathinfo;
+    /**
+     * @var array|string|string[]
+     */
 
     /**
-     * @param $filename
+     * @param string $filename
      */
-    public function read($filename)
+    public function __construct(string $filename)
     {
         $metainfo = Parser::parse($filename);
 
@@ -51,16 +54,16 @@ class Metainfo
         $this->author = $this->get($metainfo, 'dc:creator');
         $this->date = $this->get($metainfo, 'dc:date');
         $this->format = $this->get($metainfo, 'dc:format');
-        $this->path = pathinfo($filename);
         $this->description = $this->get($metainfo, 'dc:description');
+        $this->pathinfo = pathinfo($filename);
     }
 
     /**
-     * @param $string
-     * @param $element
+     * @param string $string
+     * @param string $element
      * @return string
      */
-    protected function get($string, $element)
+    protected function get(string $string, string $element)
     {
         $start = strpos($string, '<' . $element . '>') + strlen($element) + 2;
         $length = strpos(substr($string, $start), '</' . $element . '>');
