@@ -59,15 +59,15 @@ class Metainfo
     }
 
     /**
-     * @param string $string
+     * @param mixed $metainfo
      * @param string $element
      * @return string
      */
-    protected function get(string $string, string $element)
+    protected function get($metainfo, string $element)
     {
-        $start = strpos($string, '<' . $element . '>') + strlen($element) + 2;
-        $length = strpos(substr($string, $start), '</' . $element . '>');
+        $start = strpos($metainfo, '<' . $element . '>') + strlen($element) + 2;
+        $length = strpos(substr($metainfo, $start), '</' . $element . '>');
 
-        return $length ? trim(strip_tags(substr($string, $start, $length))) : null;
+        return $length ? trim(strip_tags(substr($metainfo, $start, $length))) : null;
     }
 }
