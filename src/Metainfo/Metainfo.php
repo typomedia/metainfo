@@ -41,6 +41,11 @@ class Metainfo
     public $file;
 
     /**
+     * @var false|string
+     */
+    public $hash;
+
+    /**
      * @param string $filename
      */
     public function __construct(string $filename)
@@ -52,6 +57,7 @@ class Metainfo
         $this->date = $this->get($metainfo, 'dc:date');
         $this->format = $this->get($metainfo, 'dc:format');
         $this->description = $this->get($metainfo, 'dc:description');
+        $this->hash = md5_file($filename); // md5 for performance
         $this->file = $filename;
     }
 
