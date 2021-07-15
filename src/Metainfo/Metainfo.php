@@ -36,12 +36,9 @@ class Metainfo
     public $date;
 
     /**
-     * @var array
+     * @var string
      */
-    public $pathinfo;
-    /**
-     * @var array|string|string[]
-     */
+    public $file;
 
     /**
      * @param string $filename
@@ -55,7 +52,7 @@ class Metainfo
         $this->date = $this->get($metainfo, 'dc:date');
         $this->format = $this->get($metainfo, 'dc:format');
         $this->description = $this->get($metainfo, 'dc:description');
-        $this->pathinfo = pathinfo($filename);
+        $this->file = $filename;
     }
 
     /**

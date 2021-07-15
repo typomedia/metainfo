@@ -25,7 +25,7 @@ class MetainfoTest extends TestCase
         $this->assertEquals('PDF/A Competence Center, Leonard Rosenthol', $metainfo->author);
         $this->assertEquals('PDF/A Metadata – XMP, RDF &amp; Dublin Core', $metainfo->description);
         $this->assertEquals('application/pdf', $metainfo->format);
+        $this->assertEquals($file, $metainfo->file);
         $this->assertEmpty($metainfo->date);
-        $this->assertIsArray($metainfo->pathinfo);
     }
 }
