@@ -19,7 +19,7 @@ class Parser
 
         if ($handle) {
             while (!feof($handle)) {
-                $chunk = fread($handle, 4096);
+                $chunk = fread($handle, 1024);
 
                 $start = strpos($chunk, '<x:xmpmeta');
                 if ($start) {
