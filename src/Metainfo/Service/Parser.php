@@ -23,16 +23,17 @@ class Parser
 
                 $start = strpos($chunk, '<x:xmpmeta');
                 if ($start) {
-                    $buffer = trim(substr($chunk, $start));
+                    $buffer = substr($chunk, $start);
                 }
 
                 if ($buffer) {
-                    $buffer .= $chunk;
+                    $buffer .= $start ? '' : $chunk;
                 }
 
-                $end = strpos($buffer, '</x:xmpmeta>');
+                $needle = '</x:xmpmeta>';
+                $end = strpos($buffer, $needle);
                 if ($end) {
-                    $buffer = trim(substr($buffer, 0, $end + 12));
+                    $buffer = substr($buffer, 0, $end + strlen($needle));
                 }
             }
             fclose($handle);

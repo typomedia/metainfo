@@ -23,13 +23,13 @@ composer require typomedia/metainfo
 ```php
 use Typomedia\Metainfo\Metainfo;
 
-$this->metainfo = new Metainfo('example.pdf');
+$metainfo = new Metainfo('example.pdf');
 
-print $this->metainfo->title;
-print $this->metainfo->author;
-print $this->metainfo->description;
-print $this->metainfo->format;
-print $this->metainfo->date;
+print $metainfo->title;
+print $metainfo->author;
+print $metainfo->description;
+print $metainfo->format;
+print $metainfo->date;
 ```
 
 ## Introduction
